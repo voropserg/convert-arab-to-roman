@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head lang="en">
+    <meta charset="utf-8" />
+    <title>Converter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" tye="image/png" href="{% static "/img/favicon.png" %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static "/css/main.css" %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark" id="nav">
+        <a class="navbar-brand" href="#">Converter</a>
+    </nav>
+    <main class="container-flow mt-4 ml-4">
+        <form class="form-inline"  id="conv" method="POST">
+            {% csrf_token %}
+            <textarea class="form-control" style="width:35%" rows="5"  id="field1" placeholder="Number in arabic or romania system"></textarea>
+            <input type="submit" id="submit" class="btn btn-primary ml-2 mr-2" value="Convert"></button>
+            <textarea readonly class="form-control" style="width:35%" rows="5" id="field2" placeholder="Result"></textarea>
+        </form>
+        <button class="btn btn-outline-info btn-md mt-3" data-toggle="popover" data-placement="bottom" data-trigger="focus" title="Reference" data-content="Input number in arab/roman system in first fied, press Convert and get number in opposite system as a result ">Reference</button>
+        <script src="{% static "/script/main.js" %}"></script>
+    </main>
+</body>
+</html>
