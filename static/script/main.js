@@ -1,10 +1,10 @@
+
 $(document).ready(function(){
     $('[data-toggle="popover"]').popover(); 
 
-    $("form").submit(function(event){
+    $("#conv").on("submit", function(event){
         event.preventDefault();
         var data = $("#field1").val();
-        console.log(data);
         $.ajax({
             type: "POST",
             data: {
@@ -13,8 +13,25 @@ $(document).ready(function(){
             },
             dataType: "json"
         }).done(function(resp){
-            $("#field2").val(resp["res"]);
-            console.log("Recived data:" + resp["res"]);
+            var res = resp["res"];
+            var regex = /\d+/;
+            if (regex.test(res)){
+                $("#label1").html("Romanian");
+                $("#label2").html("Arabic");
+                $("#label2").css("width", "27.3%");
+            }
+            else if (res != ""){
+                $("#label1").html("Arabic");
+                $("#label2").html("Romanian");
+                $("#label2").css("width", "28.6%");
+            }
+            $("#field2").val(res);
         })
-    })
+    });
+
+    $("#field1").on("keyup", function(){
+        if ($("#instConv").prop("checked") == true){
+            $("#conv").submit();
+        }
+    });
 });

@@ -16,15 +16,22 @@
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark" id="nav">
         <a class="navbar-brand" href="#">Converter</a>
     </nav>
-    <main class="container-flow mt-4 ml-4">
+    <main class="container-fluid mt-4">
+        <div class="d-flex justify-content-between">
+            <p id="label1">Romanian</p>
+            <p id="label2" style="width: 27.3%">Arabic</p>
+        </div>
         <form class="form-inline"  id="conv" method="POST">
             {% csrf_token %}
             <textarea class="form-control" style="width:35%" rows="5"  id="field1" placeholder="Number in arabic or romania system"></textarea>
             <input type="submit" id="submit" class="btn btn-primary ml-2 mr-2" value="Convert"></button>
             <textarea readonly class="form-control" style="width:35%" rows="5" id="field2" placeholder="Result"></textarea>
         </form>
-        <button class="btn btn-outline-info btn-md mt-3" data-toggle="popover" data-placement="bottom" data-trigger="focus" title="Reference" data-content="Input number in arab/roman system in first fied, press Convert and get number in opposite system as a result ">Reference</button>
-        <script src="{% static "/script/main.js" %}"></script>
     </main>
+    <div class="d-flex-inline ml-3 mt-3 justify-content-between">
+        <button class="btn btn-outline-info btn-md " data-toggle="popover" data-placement="bottom" data-trigger="focus" title="Reference" data-content="Input number in arab/roman system in first fied, press Convert and get number in opposite system as a result ">Reference</button>
+        <input type="checkbox" class="form-check-inline ml-4" id="instConv" checked>Instant Convertation
+    </div>
+    <script src="{% static "/script/main.js" %}"></script>
 </body>
 </html>

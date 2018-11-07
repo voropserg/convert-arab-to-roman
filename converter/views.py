@@ -5,14 +5,6 @@ from .models import romNum, romLit
 import re
 
 
-# class IndexView(View):
-#     def get(self, request, *args, **kwargs):
-#         if request.method == "POST":
-#             return JsonResponse(request.POST["raData"])
-#         elif request.method == "GET":
-#             return render(request, "converter/index.html")
-
-
 def index(request):
     if request.method == "POST":
         return JsonResponse(convertRequest(request.POST["rData"]))
@@ -21,6 +13,7 @@ def index(request):
 
 def convertRequest(number):
     res = ""
+    number = number.strip()
     if number.isdigit():
         number = int(number)
         for num, lit in romNum:
